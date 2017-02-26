@@ -80,4 +80,3 @@ This test is described in details in the technical report by Pini,
   functional Hilbert spaces}, available online at
   \url{https://mox.polimi.it/publication-results/?id=524&tipo=add_qmox}.
 }
-

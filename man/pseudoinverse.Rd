@@ -20,4 +20,3 @@ A matrix containing the pseudoinverse of the sample covariance matrix.
 \code{pseudoinverse} computes the Moore-Penrose inverse of the sample covariance matrix using the \code{RcppArmadillo} interface for fast pseudoinverse calculations via divide and conquer method.
 }
 \keyword{internal}
-

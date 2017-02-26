@@ -1,21 +1,21 @@
 Package: fdahotelling
-Title: Hotelling-Inspired Statistical Tests for Functional Data Analysis
+Title: Global Inference for Functional Data Analysis in R
 Version: 0.0.0.9000
 Authors@R: as.person(c(
     "Alessia Pini <alessia.pini@polimi.it> [aut]",
     "Aymeric Stamm <aymeric@stamm.fr> [aut, cre]",
     "Simone Vantini <simone.vantini@polimi.it> [aut]"
   ))
-Description: Hotelling-Inspired Statistical Tests for Functional Data Analysis
-    in R. This package provides a C++ implementation of Hotelling's T^2
-    statistic generalized for functional data featuring fast pseudoinverse
-    computation using the RcppArmadillo package. Other state-of-the-art
-    statistics suitable to functional data are provided as well and can often
-    be seen as simplified versions of Hotelling's statistic. The package
-    fdahotelling also provides means for making inference on the mean of
-    a population of curves (or on the mean difference between two populations
-    of curves) in both parametric fashion (relying on the normality assumption)
-    and non-parametric fashion (relying on permutation principles).
+Description: Global Inference for Functional Data Analysis in R. This package 
+    provides a C++ implementation of Hotelling's T^2 statistic generalized for 
+    functional data featuring fast pseudoinverse computation using the 
+    RcppArmadillo package. Other state-of-the-art statistics suitable to 
+    functional data are provided as well and can often be seen as simplified 
+    versions of Hotelling's statistic. The package fdahotelling also provides 
+    means for making inference on the mean of a population of curves (or on the 
+    mean difference between two populations of curves) in both parametric 
+    fashion (relying on the normality assumption) and non-parametric fashion 
+    (relying on permutation principles).
 Encoding: UTF-8
 Depends:
     R (>= 3.1.3)
@@ -26,7 +26,7 @@ Imports:
     dplyr (>= 0.4.3),
     purrr (>= 0.2.1),
     Rcpp (>= 0.12.3)
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 URL:
     https://mox.polimi.it/publication-results/?id=524&tipo=add_qmox,
     http://projecteuclid.org/euclid.ejs/1375708877

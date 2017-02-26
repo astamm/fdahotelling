@@ -21,4 +21,3 @@ matrix using spectral decomposition via the \code{eigen} function of the R
 \code{base} package in its symmetric version.
 }
 \keyword{internal}
-

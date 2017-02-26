@@ -2,6 +2,7 @@
 % Please edit documentation in R/statistics.R
 \name{get-statistic}
 \alias{get-statistic}
+\alias{get_hotelling}
 \alias{get_L1}
 \alias{get_L1_std}
 \alias{get_L2}
@@ -9,7 +10,6 @@
 \alias{get_Linf}
 \alias{get_Linf_std}
 \alias{get_all}
-\alias{get_hotelling}
 \title{Statistics for functional data}
 \usage{
 get_hotelling(x, y = NULL, mu = NULL, paired = FALSE, step_size = 0)
@@ -61,4 +61,3 @@ A detailed description of the individual statistics for functional
   data provided by the \pkg{fdahotelling} package can be found in the
   vignette \emph{Available statistics for functional data}.
 }
-

@@ -102,4 +102,3 @@ The underlying statistical test is described in details in the
  \emph{Hotelling \eqn{T^2} in functional Hilbert spaces}, available online
  at \url{https://mox.polimi.it/publication-results/?id=524&tipo=add_qmox}.
 }
-

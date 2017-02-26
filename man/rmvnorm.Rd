@@ -20,4 +20,3 @@ A matrix of size \eqn{n\times} \code{length(mean)} containing \eqn{n} randomly s
 \code{rmvnorm} generates random samples from a multivariate Gaussian distribution with mean \eqn{\mu} and variance-covariance matrix \eqn{\Sigma} assumed positive semi-definite.
 }
 \keyword{internal}
-

@@ -4,8 +4,7 @@
 \name{fdahotelling}
 \alias{fdahotelling}
 \alias{fdahotelling-package}
-\title{fdahotelling: A package of Hotelling-inspired statistical tests for
-functional data.}
+\title{Global Inference for Functional Data Analysis in R.}
 \description{
 The \pkg{fdahotelling} package provides a number of statistics for functional
 data that turn out to be useful in the context of inference for the mean of

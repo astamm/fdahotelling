@@ -35,4 +35,3 @@ A named numeric vector of size 1 storing the Hotelling's \eqn{T^2} statistic def
 \code{get_hotelling_impl} computes the generalized Hotelling's \eqn{T^2} statistic using the \code{RcppArmadillo} interface for fast pseudoinverse calculations via divide and conquer method.
 }
 \keyword{internal}
-

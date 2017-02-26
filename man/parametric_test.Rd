@@ -62,4 +62,3 @@ This test is described in details in Secchi, P., Stamm, A., &
   doi:10.1214/13-EJS833, available online at
   \url{http://projecteuclid.org/euclid.ejs/1375708877}.
 }
-

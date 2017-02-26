@@ -21,4 +21,3 @@ name of one of the subgroups defined in the \code{probs} vector.
 number of lines of a dataset) into subgroups.
 }
 \keyword{internal}
-

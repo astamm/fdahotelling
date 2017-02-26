@@ -18,4 +18,3 @@ A numeric vector with the positive eigenvalues of the sample covariance matrix o
 \code{eigenvalues} computes the positive eigenvalues of the sample covariance matrix using the \code{RcppArmadillo} interface for fast eigen-decomposition via divide and conquer method.
 }
 \keyword{internal}
-

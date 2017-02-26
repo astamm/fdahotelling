@@ -23,4 +23,3 @@ name of one of the subgroups defined in the \code{probs} vector.
 smaller groups.
 }
 \keyword{internal}
-
