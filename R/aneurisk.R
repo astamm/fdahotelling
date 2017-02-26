@@ -1,0 +1,35 @@
+#' Aneurisk dataset
+#'
+#' Geometrical and hemodynamical features of the internal carotid artery (ICA)
+#' of 50 subjects diagnosed with a cerebral aneurysm along the ICA. Measured
+#' features were the radius and its derivative, the centerline curvature, the
+#' wall-shear-stress and its derivative and the torsion. After alignment and
+#' smoothing pre-processing steps, each feature was evaluated onto the same
+#' 512-point uniform 1-dimensional grid of curvilinear ascissa. Subjects were
+#' divided into two groups pertaining to different clinical severity of the
+#' aneurysm:
+#' \describe{
+#' \item{High-Risk Group.}{25 subjects affected by a severe form of the
+#'  pathology (patients with an aneurysm in the upper part of the ICA),}
+#' \item{Low-Risk Group.}{25 subjects affected by a minor form of the pathology
+#'  (patients with an aneurysm in the lower part of the ICA)
+#'  or healthy (without any aneurysm).}
+#' }
+#'
+#' @format A \code{\link[dplyr]{data_frame}} with 12 rows and 4 variables:
+#' \describe{
+#'  \item{\code{variable}}{Name of the ICA feature.}
+#'  \item{\code{group}}{Group status defining aneurysm severity (\code{low} or
+#'  \code{up} for Low-Risk and Upper-Risk groups, respectively).}
+#'  \item{\code{abscissa}}{List of numeric vectors specifying the 512-point
+#'  uniform grid defining the curvilinear abscissa.}
+#'  \item{\code{data}}{A list of \code{\link[dplyr]{data_frame}}s with 25 rows
+#'  and 512 variables containing the measurements of the ICA features specified
+#'  in the \code{variable} column for subjects of group specified in the
+#'  \code{group} column. Subjects are list by row and pointwise feature curve
+#'  evaluations by column.}
+#' }
+#' @source
+#'  \url{http://ecm2.mathcs.emory.edu/aneuriskweb/a65},
+#'  \url{https://statistics.mox.polimi.it/aneurisk/}
+"aneurisk"

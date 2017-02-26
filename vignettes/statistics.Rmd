@@ -1,0 +1,84 @@
+---
+title: "Available statistics for functional data"
+author: "Aymeric Stamm"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Available statistics for functional data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+bibliography: statistics.bib
+---
+
+## Statistics for one-population tests
+
+Let $\xi_1,\dots,\xi_n$ be a sample of $n$ random functions taking values in 
+$L^2(T)$ where $T$ is a compact set of $\mathbb{R}^d$. Assume that these random 
+functions share the same underlying law with mean function $\mu$. Denote by 
+$\overline{\xi}$ the sample mean function, by $\mathcal{S}$ the sample 
+covariance kernel and by $\widehat{V}$ the sample covariance operator. As part 
+of the **fdahotelling** package, the following statistics are then available for 
+making inference about the mean function $\mu$ [@Pini2015]:
+
+- **Hotelling's $T^2$ statistic**. The formal definition reads [@Secchi2013]: $$
+T^2 = \max_{g \in \mathrm{Im}\widehat{V}} n \frac{ \left[ \int g(t) \left( 
+\overline{\xi}(t) - \mu(t) \right) \mbox{d}t \right]^2 }{\int\!\!\int 
+\mathcal{S}(t,s) g(t) g(s) \mbox{d}t \mbox{d}s}. $$
+- **$L^2$-norm statistic**. The formal definition reads [@Hall2002; @Hall2007;
+@Horvath2012]: $$ T_{L^2} = \int_T \left( \overline{\xi}(t) - \mu(t) \right)^2 
+\mbox{d}t. $$
+- **Standardized $L^2$-norm statistic**. The formal definition reads [@Hall2002;
+@Hall2007; @Horvath2012]: $$ T_{L_t^2} = \int_T \frac{ \left( \overline{\xi}(t) 
+\phantom{}- \mu(t) \right)^2}{\mathcal{S}(t,t)} \mbox{d}t. $$
+- **$L^1$-norm statistic**. The formal definition reads [@Hall2002]: $$ T_{L^1}
+= \int_T \left| \overline{\xi}(t) - \mu(t) \right| \mbox{d}t. $$
+- **Standardized $L^1$-norm statistic**. The formal definition reads
+[@Hall2002]: $$ T_{L_t^1} = \int_T \frac{ \left| \overline{\xi}(t) - \mu(t)
+\right|} {\sqrt{\mathcal{S}(t,t)}} \mbox{d}t. $$
+- **$L^\infty$-norm statistic**. The formal definition reads [@Hall2002]: $$
+T_{L^\infty} = \max_{t \in T} \left| \overline{\xi}(t) - \mu(t) \right|. $$
+- **Standardized $L^\infty$-norm statistic**. The formal definition reads 
+[@Hall2002]: $$ T_{L_t^\infty} = \max_{t \in T} \frac{ \left| \overline{\xi}(t)
+\phantom{}- \mu(t) \right|}{\sqrt{\mathcal{S}(t,t)}}. $$
+
+## Statistics for two-population tests
+
+Let $\xi_{11},\dots,\xi_{1n_1}$ and $\xi_{21},\dots,\xi_{2n_2}$ be two 
+samples of respectively $n_1$ and $n_2$ random functions taking values in 
+$L^2(T)$ where $T$ is a compact set of $\mathbb{R}^d$. Assume that, the random 
+functions of each sample share the same underlying law with mean functions 
+$\mu_1$ and $\mu_2$ respectively. Denote by $\overline{\xi}_1$ and 
+$\overline{\xi}_2$ the respective sample mean functions, by 
+$\mathcal{S}_{pooled}$ the sample pooled covariance kernel and by 
+$\widehat{V}_{pooled}$ the sample pooled covariance operator. As part of the **fdahotelling** package, the following statistics are then 
+available for making inference about the difference $\Delta\mu$ between the mean 
+functions:
+
+- **Hotelling's $T^2$ statistic**. The formal definition reads [@Secchi2013]: $$
+T^2 = \max_{g \in \mathrm{Im}\widehat{V}_{pooled}} \frac{n_1n_2}{n_1+n_2} 
+\frac{\left[ \int g(t) \left( \overline{\xi}_1(t) - \overline{\xi}_2(t) - 
+\Delta\mu(t) \right) \mbox{d}t \right]^2 }{\int\!\!\int 
+\mathcal{S}_{pooled}(t,s) g(t) g(s) \mbox{d}t \mbox{d}s}. $$
+- **$L^2$-norm statistic**. The formal definition reads [@Hall2002; @Hall2007;
+@Horvath2012]: $$ T_{L^2} = \int_T \left(\overline{\xi}_1(t) -
+\overline{\xi}_2(t) - \Delta\mu(t)\right)^2 \mbox{d}t. $$
+- **Standardized $L^2$-norm statistic**. The formal definition reads [@Hall2002;
+@Hall2007; @Horvath2012]: $$ T_{L_t^2} = \int_T \frac{ \left(
+\overline{\xi}_1(t) - \overline{\xi}_2(t) - \Delta\mu(t)
+\right)^2}{\mathcal{S}_{pooled}(t,t)} \mbox{d}t. $$
+- **$L^1$-norm statistic**. The formal definition reads [@Hall2002]: $$ T_{L^1}
+= \int_T \left| \overline{\xi}_1(t) - \overline{\xi}_2(t) -\Delta\mu(t) \right| 
+\mbox{d}t. $$
+- **Standardized $L^1$-norm statistic**. The formal definition reads
+[@Hall2002]: $$ T_{L_t^1} = \int_T \frac{ \left| \overline{\xi}_1(t) - 
+\overline{\xi}_2(t) - \Delta\mu(t) \right|}{\sqrt{\mathcal{S}_{pooled}(t,t)}} 
+\mbox{d}t. $$
+- **$L^\infty$-norm statistic**. The formal definition reads [@Hall2002]: $$
+T_{L^\infty} = \max_{t \in T} \left| \overline{\xi}_1(t) - \overline{\xi}_2(t) -
+\Delta\mu(t) \right|. $$
+- **Standardized $L^\infty$-norm statistic**. The formal definition reads 
+[@Hall2002]: $$ T_{L_t^\infty} = \max_{t \in T} \frac{ \left|
+\overline{\xi}_1(t) - \overline{\xi}_2(t) - \Delta\mu(t) 
+\right|}{\sqrt{\mathcal{S}_{pooled}(t,t)}}. $$
+
+## References
