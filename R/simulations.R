@@ -16,7 +16,7 @@
 #' fashion on a uniform grid.
 #' }
 #'
-#' @inheritParams get-statistic
+#' @inheritParams statistics
 #' @param mu1 True mean function or difference between mean functions
 #'  (default: 0).
 #' @param Sigma True covariance matrix \eqn{\Sigma} (default: 1).
@@ -102,7 +102,7 @@ parametric_power <- function(mu1 = 0, Sigma = diag(length(mu1)), n1 = 10L,
     df1 <- df[idx1, , drop = FALSE] + deltaMatrix
     if (!oneSampleTest)
       df2 <- df[idx2, , drop = FALSE]
-    FS <- get_hotelling_impl(x = df1, y = df2, mu = 0, step_size = step_size,
+    FS <- stat_hotelling_impl(x = df1, y = df2, mu = 0, step_size = step_size,
                              use_correction = TRUE)
     pos <- pos + (FS > q_fisher)
   }

@@ -15,14 +15,14 @@ population.}
 population (default: \code{NULL}).}
 
 \item{mu}{True mean value (or difference between mean values) under the null
-hypothesis (default = 0).}
+hypothesis (default = \code{0}).}
 
 \item{paired}{Is the input data paired? (default: \code{FALSE}).}
 
 \item{step_size}{The step size used to perform integral approximation via the
-method of rectangles (default: 0). When set to 0 (default), it assumes that
-we are dealing with multivariate data rather than functional data and thus
-no integration is necessary.}
+method of rectangles (default: \code{0}). When set to \code{0}, it assumes
+that we are dealing with multivariate data rather than functional data and
+thus no integration is necessary.}
 
 \item{skip_check}{Flag to skip checks on input types. Default is off. This
 parameter should always be set to its default \code{FALSE}. It is set to

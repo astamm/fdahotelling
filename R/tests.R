@@ -4,7 +4,7 @@
 #' difference between the means) of populations of curves based on Hotelling's
 #' T^2 statistic.
 #'
-#' @inheritParams get-statistic
+#' @inheritParams statistics
 #' @param skip_check Flag to skip checks on input types. Default is off. This
 #'   parameter should always be set to its default \code{FALSE}. It is set to
 #'   \code{TRUE} only internally, in power calculation functions, in which data
@@ -47,7 +47,7 @@ parametric_test <- function(x, y = NULL, mu = NULL,
     stop("Both groups should have the same number of components.")
   nx <- dim(x)[1]
   ny <- ifelse(oneSample, 1, dim(y)[1])
-  stat <- get_hotelling_impl(x = x, y = y, mu = mu,
+  stat <- stat_hotelling_impl(x = x, y = y, mu = mu,
                              paired = paired, step_size = step_size,
                              use_correction = TRUE)
   df1 <- min(nx + ny - 2, p)
@@ -121,14 +121,14 @@ permutation_test <- function(x, y = NULL, mu = 0,
   oneSample <- dim(y)[2] == 0
 
   stat_fun <- switch (statistic,
-    "Hotelling" = get_hotelling_impl,
-    "L1" = get_L1_impl,
-    "L2" = get_L2_impl,
-    "Linf" = get_Linf_impl,
-    "StandardizedL1" = get_L1_std_impl,
-    "StandardizedL2" = get_L2_std_impl,
-    "StandardizedLinf" = get_Linf_std_impl,
-    "All" = get_all_impl,
+    "Hotelling" = stat_hotelling_impl,
+    "L1" = stat_L1_impl,
+    "L2" = stat_L2_impl,
+    "Linf" = stat_Linf_impl,
+    "StandardizedL1" = stat_L1_std_impl,
+    "StandardizedL2" = stat_L2_std_impl,
+    "StandardizedLinf" = stat_Linf_std_impl,
+    "All" = stat_all_impl,
     stop("Unrecognised statistic. Please choose between Hotelling, L1, L2, Linf,
          StandardizedL1, StandardizedL2, StandardizedLinf and All.")
   )

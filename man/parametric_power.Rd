@@ -26,9 +26,9 @@ parametric_power(mu1 = 0, Sigma = diag(length(mu1)), n1 = 10L,
 \item{paired}{Is the input data paired? (default: \code{FALSE}).}
 
 \item{step_size}{The step size used to perform integral approximation via the
-method of rectangles (default: 0). When set to 0 (default), it assumes that
-we are dealing with multivariate data rather than functional data and thus
-no integration is necessary.}
+method of rectangles (default: \code{0}). When set to \code{0}, it assumes
+that we are dealing with multivariate data rather than functional data and
+thus no integration is necessary.}
 }
 \value{
 An estimate of the statistical power of the test.

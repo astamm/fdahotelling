@@ -8,7 +8,7 @@ using namespace Rcpp;
 
 // rmvnorm
 arma::mat rmvnorm(const unsigned int n, const arma::colvec& mean, const arma::mat& squareRootSigma);
-RcppExport SEXP fdahotelling_rmvnorm(SEXP nSEXP, SEXP meanSEXP, SEXP squareRootSigmaSEXP) {
+RcppExport SEXP _fdahotelling_rmvnorm(SEXP nSEXP, SEXP meanSEXP, SEXP squareRootSigmaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -21,7 +21,7 @@ END_RCPP
 }
 // eigenvalues
 arma::colvec eigenvalues(const arma::mat& x, const arma::mat& y);
-RcppExport SEXP fdahotelling_eigenvalues(SEXP xSEXP, SEXP ySEXP) {
+RcppExport SEXP _fdahotelling_eigenvalues(SEXP xSEXP, SEXP ySEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -33,7 +33,7 @@ END_RCPP
 }
 // pseudoinverse
 arma::mat pseudoinverse(const arma::mat& x, const arma::mat& y, const double tolerance);
-RcppExport SEXP fdahotelling_pseudoinverse(SEXP xSEXP, SEXP ySEXP, SEXP toleranceSEXP) {
+RcppExport SEXP _fdahotelling_pseudoinverse(SEXP xSEXP, SEXP ySEXP, SEXP toleranceSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -44,9 +44,9 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// get_hotelling_impl
-Rcpp::NumericVector get_hotelling_impl(const arma::mat& x, const arma::mat& y, const arma::colvec& mu, const bool paired, const double step_size, const bool use_correction, const double tolerance);
-RcppExport SEXP fdahotelling_get_hotelling_impl(SEXP xSEXP, SEXP ySEXP, SEXP muSEXP, SEXP pairedSEXP, SEXP step_sizeSEXP, SEXP use_correctionSEXP, SEXP toleranceSEXP) {
+// stat_hotelling_impl
+Rcpp::NumericVector stat_hotelling_impl(const arma::mat& x, const arma::mat& y, const arma::colvec& mu, const bool paired, const double step_size, const bool use_correction, const double tolerance);
+RcppExport SEXP _fdahotelling_stat_hotelling_impl(SEXP xSEXP, SEXP ySEXP, SEXP muSEXP, SEXP pairedSEXP, SEXP step_sizeSEXP, SEXP use_correctionSEXP, SEXP toleranceSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -57,13 +57,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const double >::type step_size(step_sizeSEXP);
     Rcpp::traits::input_parameter< const bool >::type use_correction(use_correctionSEXP);
     Rcpp::traits::input_parameter< const double >::type tolerance(toleranceSEXP);
-    rcpp_result_gen = Rcpp::wrap(get_hotelling_impl(x, y, mu, paired, step_size, use_correction, tolerance));
+    rcpp_result_gen = Rcpp::wrap(stat_hotelling_impl(x, y, mu, paired, step_size, use_correction, tolerance));
     return rcpp_result_gen;
 END_RCPP
 }
-// get_L1_impl
-Rcpp::NumericVector get_L1_impl(const arma::mat& x, const arma::mat& y, const arma::colvec& mu, const bool paired, const double step_size);
-RcppExport SEXP fdahotelling_get_L1_impl(SEXP xSEXP, SEXP ySEXP, SEXP muSEXP, SEXP pairedSEXP, SEXP step_sizeSEXP) {
+// stat_L1_impl
+Rcpp::NumericVector stat_L1_impl(const arma::mat& x, const arma::mat& y, const arma::colvec& mu, const bool paired, const double step_size);
+RcppExport SEXP _fdahotelling_stat_L1_impl(SEXP xSEXP, SEXP ySEXP, SEXP muSEXP, SEXP pairedSEXP, SEXP step_sizeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -72,13 +72,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const arma::colvec& >::type mu(muSEXP);
     Rcpp::traits::input_parameter< const bool >::type paired(pairedSEXP);
     Rcpp::traits::input_parameter< const double >::type step_size(step_sizeSEXP);
-    rcpp_result_gen = Rcpp::wrap(get_L1_impl(x, y, mu, paired, step_size));
+    rcpp_result_gen = Rcpp::wrap(stat_L1_impl(x, y, mu, paired, step_size));
     return rcpp_result_gen;
 END_RCPP
 }
-// get_L2_impl
-Rcpp::NumericVector get_L2_impl(const arma::mat& x, const arma::mat& y, const arma::colvec& mu, const bool paired, const double step_size);
-RcppExport SEXP fdahotelling_get_L2_impl(SEXP xSEXP, SEXP ySEXP, SEXP muSEXP, SEXP pairedSEXP, SEXP step_sizeSEXP) {
+// stat_L2_impl
+Rcpp::NumericVector stat_L2_impl(const arma::mat& x, const arma::mat& y, const arma::colvec& mu, const bool paired, const double step_size);
+RcppExport SEXP _fdahotelling_stat_L2_impl(SEXP xSEXP, SEXP ySEXP, SEXP muSEXP, SEXP pairedSEXP, SEXP step_sizeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -87,13 +87,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const arma::colvec& >::type mu(muSEXP);
     Rcpp::traits::input_parameter< const bool >::type paired(pairedSEXP);
     Rcpp::traits::input_parameter< const double >::type step_size(step_sizeSEXP);
-    rcpp_result_gen = Rcpp::wrap(get_L2_impl(x, y, mu, paired, step_size));
+    rcpp_result_gen = Rcpp::wrap(stat_L2_impl(x, y, mu, paired, step_size));
     return rcpp_result_gen;
 END_RCPP
 }
-// get_Linf_impl
-Rcpp::NumericVector get_Linf_impl(const arma::mat& x, const arma::mat& y, const arma::colvec& mu, const bool paired, const double step_size);
-RcppExport SEXP fdahotelling_get_Linf_impl(SEXP xSEXP, SEXP ySEXP, SEXP muSEXP, SEXP pairedSEXP, SEXP step_sizeSEXP) {
+// stat_Linf_impl
+Rcpp::NumericVector stat_Linf_impl(const arma::mat& x, const arma::mat& y, const arma::colvec& mu, const bool paired, const double step_size);
+RcppExport SEXP _fdahotelling_stat_Linf_impl(SEXP xSEXP, SEXP ySEXP, SEXP muSEXP, SEXP pairedSEXP, SEXP step_sizeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -102,13 +102,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const arma::colvec& >::type mu(muSEXP);
     Rcpp::traits::input_parameter< const bool >::type paired(pairedSEXP);
     Rcpp::traits::input_parameter< const double >::type step_size(step_sizeSEXP);
-    rcpp_result_gen = Rcpp::wrap(get_Linf_impl(x, y, mu, paired, step_size));
+    rcpp_result_gen = Rcpp::wrap(stat_Linf_impl(x, y, mu, paired, step_size));
     return rcpp_result_gen;
 END_RCPP
 }
-// get_L1_std_impl
-Rcpp::NumericVector get_L1_std_impl(const arma::mat& x, const arma::mat& y, const arma::colvec& mu, const bool paired, const double step_size);
-RcppExport SEXP fdahotelling_get_L1_std_impl(SEXP xSEXP, SEXP ySEXP, SEXP muSEXP, SEXP pairedSEXP, SEXP step_sizeSEXP) {
+// stat_L1_std_impl
+Rcpp::NumericVector stat_L1_std_impl(const arma::mat& x, const arma::mat& y, const arma::colvec& mu, const bool paired, const double step_size);
+RcppExport SEXP _fdahotelling_stat_L1_std_impl(SEXP xSEXP, SEXP ySEXP, SEXP muSEXP, SEXP pairedSEXP, SEXP step_sizeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -117,13 +117,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const arma::colvec& >::type mu(muSEXP);
     Rcpp::traits::input_parameter< const bool >::type paired(pairedSEXP);
     Rcpp::traits::input_parameter< const double >::type step_size(step_sizeSEXP);
-    rcpp_result_gen = Rcpp::wrap(get_L1_std_impl(x, y, mu, paired, step_size));
+    rcpp_result_gen = Rcpp::wrap(stat_L1_std_impl(x, y, mu, paired, step_size));
     return rcpp_result_gen;
 END_RCPP
 }
-// get_L2_std_impl
-Rcpp::NumericVector get_L2_std_impl(const arma::mat& x, const arma::mat& y, const arma::colvec& mu, const bool paired, const double step_size);
-RcppExport SEXP fdahotelling_get_L2_std_impl(SEXP xSEXP, SEXP ySEXP, SEXP muSEXP, SEXP pairedSEXP, SEXP step_sizeSEXP) {
+// stat_L2_std_impl
+Rcpp::NumericVector stat_L2_std_impl(const arma::mat& x, const arma::mat& y, const arma::colvec& mu, const bool paired, const double step_size);
+RcppExport SEXP _fdahotelling_stat_L2_std_impl(SEXP xSEXP, SEXP ySEXP, SEXP muSEXP, SEXP pairedSEXP, SEXP step_sizeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -132,13 +132,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const arma::colvec& >::type mu(muSEXP);
     Rcpp::traits::input_parameter< const bool >::type paired(pairedSEXP);
     Rcpp::traits::input_parameter< const double >::type step_size(step_sizeSEXP);
-    rcpp_result_gen = Rcpp::wrap(get_L2_std_impl(x, y, mu, paired, step_size));
+    rcpp_result_gen = Rcpp::wrap(stat_L2_std_impl(x, y, mu, paired, step_size));
     return rcpp_result_gen;
 END_RCPP
 }
-// get_Linf_std_impl
-Rcpp::NumericVector get_Linf_std_impl(const arma::mat& x, const arma::mat& y, const arma::colvec& mu, const bool paired, const double step_size);
-RcppExport SEXP fdahotelling_get_Linf_std_impl(SEXP xSEXP, SEXP ySEXP, SEXP muSEXP, SEXP pairedSEXP, SEXP step_sizeSEXP) {
+// stat_Linf_std_impl
+Rcpp::NumericVector stat_Linf_std_impl(const arma::mat& x, const arma::mat& y, const arma::colvec& mu, const bool paired, const double step_size);
+RcppExport SEXP _fdahotelling_stat_Linf_std_impl(SEXP xSEXP, SEXP ySEXP, SEXP muSEXP, SEXP pairedSEXP, SEXP step_sizeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -147,13 +147,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const arma::colvec& >::type mu(muSEXP);
     Rcpp::traits::input_parameter< const bool >::type paired(pairedSEXP);
     Rcpp::traits::input_parameter< const double >::type step_size(step_sizeSEXP);
-    rcpp_result_gen = Rcpp::wrap(get_Linf_std_impl(x, y, mu, paired, step_size));
+    rcpp_result_gen = Rcpp::wrap(stat_Linf_std_impl(x, y, mu, paired, step_size));
     return rcpp_result_gen;
 END_RCPP
 }
-// get_all_impl
-Rcpp::NumericVector get_all_impl(const arma::mat& x, const arma::mat& y, const arma::colvec& mu, const bool paired, const double step_size);
-RcppExport SEXP fdahotelling_get_all_impl(SEXP xSEXP, SEXP ySEXP, SEXP muSEXP, SEXP pairedSEXP, SEXP step_sizeSEXP) {
+// stat_all_impl
+Rcpp::NumericVector stat_all_impl(const arma::mat& x, const arma::mat& y, const arma::colvec& mu, const bool paired, const double step_size);
+RcppExport SEXP _fdahotelling_stat_all_impl(SEXP xSEXP, SEXP ySEXP, SEXP muSEXP, SEXP pairedSEXP, SEXP step_sizeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -162,7 +162,27 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const arma::colvec& >::type mu(muSEXP);
     Rcpp::traits::input_parameter< const bool >::type paired(pairedSEXP);
     Rcpp::traits::input_parameter< const double >::type step_size(step_sizeSEXP);
-    rcpp_result_gen = Rcpp::wrap(get_all_impl(x, y, mu, paired, step_size));
+    rcpp_result_gen = Rcpp::wrap(stat_all_impl(x, y, mu, paired, step_size));
     return rcpp_result_gen;
 END_RCPP
+}
+
+static const R_CallMethodDef CallEntries[] = {
+    {"_fdahotelling_rmvnorm", (DL_FUNC) &_fdahotelling_rmvnorm, 3},
+    {"_fdahotelling_eigenvalues", (DL_FUNC) &_fdahotelling_eigenvalues, 2},
+    {"_fdahotelling_pseudoinverse", (DL_FUNC) &_fdahotelling_pseudoinverse, 3},
+    {"_fdahotelling_stat_hotelling_impl", (DL_FUNC) &_fdahotelling_stat_hotelling_impl, 7},
+    {"_fdahotelling_stat_L1_impl", (DL_FUNC) &_fdahotelling_stat_L1_impl, 5},
+    {"_fdahotelling_stat_L2_impl", (DL_FUNC) &_fdahotelling_stat_L2_impl, 5},
+    {"_fdahotelling_stat_Linf_impl", (DL_FUNC) &_fdahotelling_stat_Linf_impl, 5},
+    {"_fdahotelling_stat_L1_std_impl", (DL_FUNC) &_fdahotelling_stat_L1_std_impl, 5},
+    {"_fdahotelling_stat_L2_std_impl", (DL_FUNC) &_fdahotelling_stat_L2_std_impl, 5},
+    {"_fdahotelling_stat_Linf_std_impl", (DL_FUNC) &_fdahotelling_stat_Linf_std_impl, 5},
+    {"_fdahotelling_stat_all_impl", (DL_FUNC) &_fdahotelling_stat_all_impl, 5},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_fdahotelling(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
 }
