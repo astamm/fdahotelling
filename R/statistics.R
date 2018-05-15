@@ -6,7 +6,7 @@
 #' functions.
 #'
 #' @seealso A detailed description of the individual statistics for functional
-#'   data provided by the \pkg{curvada} package can be found in the vignette
+#'   data provided by the \pkg{fdahotelling} package can be found in the vignette
 #'   \emph{Available statistics for functional data}.
 #' @param x Dataframe or matrix containing the data collected from 1st
 #'   population.
@@ -22,7 +22,7 @@
 #' @return All \code{stat_*} functions return a named numeric vector of size 1
 #'   storing the value of the corresponding statistic except \code{stat_all}
 #'   that outputs a vector of size 7 containing the values of all 7 statistics
-#'   currently available in the \pkg{curvada} package.
+#'   currently available in the \pkg{fdahotelling} package.
 #' @name statistics
 NULL
 

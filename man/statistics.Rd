@@ -49,7 +49,7 @@ thus no integration is necessary.}
 All \code{stat_*} functions return a named numeric vector of size 1
   storing the value of the corresponding statistic except \code{stat_all}
   that outputs a vector of size 7 containing the values of all 7 statistics
-  currently available in the \pkg{curvada} package.
+  currently available in the \pkg{fdahotelling} package.
 }
 \description{
 Compute various statistics for functional data using numerical integration
@@ -59,6 +59,6 @@ functions.
 }
 \seealso{
 A detailed description of the individual statistics for functional
-  data provided by the \pkg{curvada} package can be found in the vignette
+  data provided by the \pkg{fdahotelling} package can be found in the vignette
   \emph{Available statistics for functional data}.
 }

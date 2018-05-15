@@ -1,0 +1,54 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+## Overview of the `fdahotelling` package
+
+The package `fdahotelling` is an R package about inference for functional data. In this setting, statistical units are curves that belong to infinite dimensional spaces such as $L^2$. The package handles input functional data stored either in `matrix` objects or in `fd` objects from the `fda` package. The package provides a set of statistics for testing equality in distribution between samples of curves using both exact permutation testing procedures and asympotic ones. The implementation is largely in C++ language using the [Armadillo](http://arma.sourceforge.net) C++ library, which alleviates the computational burden often associated with permutation tests. In details:
+
+* the `stat_*()` functions return the value of the chosen test statistic,
+* the `test_onesample()` function returns the p-value of an either permutation or asymptotic test in which the null hypothesis is that the two samples come from the same distribution of networks,
+* the `test_twosample()` function returns the p-value of an either permutation or asymptotic test in which the null hypothesis is that the two samples come from the same distribution of networks,
+* the `power_onesample()` function returns a Monte-Carlo estimate of the power of the one-sample test in some specific scenarios.
+* the `power_twosample()` function returns a Monte-Carlo estimate of the power of the two-sample test in some specific scenarios.
+
+See the vignette *Available statistics for functional data* for the details of each function.
+
+## Installation
+
+You can install `fdahotelling` from github with:
+
+```{r gh-installation, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("astamm/fdahotelling")
+```
+
+## Usage
+
+```{r setup}
+library(fdahotelling)
+```
+
+There is a dataset called `aneurisk` included in the `fdahotelling` package that contains reconstructed curvature, torsion, radius and wall-sheer stress of the termination of the internal carotid artery (ICA) of two groups (`low` and `up`) of patients. The `low` group includes healthy subjects as well as patients with an aneurysm outside of the brain (before entering the circle of Willis). The `up` group includes patients with an aneurysm within the brain. The latter are thought to be clinically more at risk, since rupture of their aneursym(s) would have devastating consequences on their neurological abilities. One of the research questions is to understand whether the geometry of the ICA might play a role in identifying patients that are more at risk. We can thus use for instance Hotelling's statistic together with a permutation testing procedure to test if the radius of the ICA is different between the `low` and `up` groups as follows: 
+```{r radius}
+set.seed(1234)
+permutation_test(aneurisk$data[[5]], aneurisk$data[[6]], step_size = 0.01, B = 100L)
+```
+
+The test tells us that, given a significance level of $5\%$, there is no reason to believe that the mean radius is different between the two groups. Let us now test whether the mean radius first derivatives differ:
+```{r radius_der}
+set.seed(1234)
+permutation_test(aneurisk$data[[7]], aneurisk$data[[8]], step_size = 0.01, B = 100L)
+```
+
+The test tells us that, given a significance level of $5\%$, there is enough statistical evidence to conclude that there is a statistically relevant difference between the mean radius first derivatives of the two groups. Note that in this example we used only 100 permutations for reducing the computation time. This is however a rather low number of permutations that limits the p-value resolution and the power of the test. We advice using higher values (at least 1000) in practice.
