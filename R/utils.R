@@ -145,7 +145,7 @@ check_arguments <- function(x, y = NULL, mu = NULL, step_size = 0) {
     if (rangeval[1] > rangeval[2])
       stop("Common range of abscissa values between inputs is empty.")
 
-    abscissa <- seq(rangeval[1], rangeval[2], by = step_size)
+    abscissa <- seq(rangeval[1], rangeval[2], by = step_size * (rangeval[2] - rangeval[1]))
 
     x <- t(fda::eval.fd(fdobj = x, evalarg = abscissa))
 
