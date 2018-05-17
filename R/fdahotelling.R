@@ -1,4 +1,4 @@
-#' Global Inference for Functional Data Analysis in R.
+#' Inference for Functional Data Analysis in R
 #'
 #' The \pkg{fdahotelling} package provides a number of statistics for functional
 #' data that turn out to be useful in the context of inference for the mean of

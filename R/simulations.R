@@ -129,7 +129,7 @@ parametric_power <- function(mu1 = 0, Sigma = diag(length(mu1)), n1 = 10L,
 #' }
 #'
 #' @inheritParams parametric_power
-#' @inheritParams permutation_test
+#' @inheritParams tests
 #' @param mc.cores Number of cores to run the estimation on (default: 1).
 #' @return An estimate of the statistical power of the test.
 #' @seealso The underlying statistical test is described in details in the

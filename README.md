@@ -6,8 +6,8 @@ Overview of the `fdahotelling` package
 The package `fdahotelling` is an R package about inference for functional data. In this setting, statistical units are curves that belong to infinite dimensional spaces such as *L*<sup>2</sup>. The package handles input functional data stored either in `matrix` objects or in `fd` objects from the `fda` package. The package provides a set of statistics for testing equality in distribution between samples of curves using both exact permutation testing procedures and asympotic ones. The implementation is largely in C++ language using the [Armadillo](http://arma.sourceforge.net) C++ library, which alleviates the computational burden often associated with permutation tests. In details:
 
 -   the `stat_*()` functions return the value of the chosen test statistic,
--   the `test_onesample()` function returns the p-value of an either permutation or asymptotic test in which the null hypothesis is that the two samples come from the same distribution of networks,
--   the `test_twosample()` function returns the p-value of an either permutation or asymptotic test in which the null hypothesis is that the two samples come from the same distribution of networks,
+-   the `test_onesample()` function returns the p-value of an either permutation or asymptotic test in which the null hypothesis *H*<sub>0</sub> is that the center of symmetry of the distribution from which the sample comes from is equal to some function *μ*<sub>0</sub>,
+-   the `test_twosample()` function returns the p-value of an either permutation or asymptotic test in which the null hypothesis is that the difference between the mean functions of the distributions from which the two samples come from is equal to some function *δ*<sub>0</sub>,
 -   the `power_onesample()` function returns a Monte-Carlo estimate of the power of the one-sample test in some specific scenarios.
 -   the `power_twosample()` function returns a Monte-Carlo estimate of the power of the two-sample test in some specific scenarios.
 
@@ -34,7 +34,14 @@ There is a dataset called `aneurisk` included in the `fdahotelling` package that
 
 ``` r
 set.seed(1234)
-permutation_test(aneurisk$data[[5]], aneurisk$data[[6]], step_size = 0.01, B = 100L)
+lower_ind <- which(aneurisk$variable == "radius" & aneurisk$group == "low")
+upper_ind <- which(aneurisk$variable == "radius" & aneurisk$group == "up")
+permutation_test(
+  x = aneurisk$data[[lower_ind]], 
+  y = aneurisk$data[[upper_ind]], 
+  step_size = 0.01, 
+  B = 100L
+)
 #>  - P-value resolution: 0.01
 #>  - Computing approximate p-value using 100 random permutations.
 #>  - P-value will not drop below 7.91072860244862e-15 in average.
@@ -48,7 +55,14 @@ The test tells us that, given a significance level of 5%, there is no reason to 
 
 ``` r
 set.seed(1234)
-permutation_test(aneurisk$data[[7]], aneurisk$data[[8]], step_size = 0.01, B = 100L)
+lower_ind <- which(aneurisk$variable == "radius_der" & aneurisk$group == "low")
+upper_ind <- which(aneurisk$variable == "radius_der" & aneurisk$group == "up")
+permutation_test(
+  x = aneurisk$data[[lower_ind]], 
+  y = aneurisk$data[[upper_ind]], 
+  step_size = 0.01, 
+  B = 100L
+)
 #>  - P-value resolution: 0.01
 #>  - Computing approximate p-value using 100 random permutations.
 #>  - P-value will not drop below 7.91072860244862e-15 in average.
