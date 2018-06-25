@@ -36,15 +36,18 @@ devtools::install_github("astamm/fdahotelling")
 ## Usage
 
 ```{r setup}
+library(fda)
 library(fdahotelling)
 ```
+
+### Example 1: Using data stored in a `matrix` object
 
 There is a dataset called `aneurisk` included in the `fdahotelling` package that contains reconstructed curvature, torsion, radius and wall-sheer stress of the termination of the internal carotid artery (ICA) of two groups (`low` and `up`) of patients. The `low` group includes healthy subjects as well as patients with an aneurysm outside of the brain (before entering the circle of Willis). The `up` group includes patients with an aneurysm within the brain. The latter are thought to be clinically more at risk, since rupture of their aneursym(s) would have devastating consequences on their neurological abilities. One of the research questions is to understand whether the geometry of the ICA might play a role in identifying patients that are more at risk. We can thus use for instance Hotelling's statistic together with a permutation testing procedure to test if the radius of the ICA is different between the `low` and `up` groups as follows: 
 ```{r radius}
 set.seed(1234)
 lower_ind <- which(aneurisk$variable == "radius" & aneurisk$group == "low")
 upper_ind <- which(aneurisk$variable == "radius" & aneurisk$group == "up")
-permutation_test(
+test_twosample(
   x = aneurisk$data[[lower_ind]], 
   y = aneurisk$data[[upper_ind]], 
   step_size = 0.01, 
@@ -57,7 +60,7 @@ The test tells us that, given a significance level of $5\%$, there is no reason 
 set.seed(1234)
 lower_ind <- which(aneurisk$variable == "radius_der" & aneurisk$group == "low")
 upper_ind <- which(aneurisk$variable == "radius_der" & aneurisk$group == "up")
-permutation_test(
+test_twosample(
   x = aneurisk$data[[lower_ind]], 
   y = aneurisk$data[[upper_ind]], 
   step_size = 0.01, 
@@ -66,3 +69,38 @@ permutation_test(
 ```
 
 The test tells us that, given a significance level of $5\%$, there is enough statistical evidence to conclude that there is a statistically relevant difference between the mean radius first derivatives of the two groups. Note that in this example we used only 100 permutations for reducing the computation time. This is however a rather low number of permutations that limits the p-value resolution and the power of the test. We advice using higher values (at least 1000) in practice.
+
+### Example 2: Using data stored in an `fd` object
+
+We can first take the two datasets extracted above about the radius curvature and transform them into `fd` objects as follows:
+```{r fd_prep}
+# An fd object is created from the transposed matrix 
+# in the sense that it expects observations to be stored
+# in columns and grid points in rows.
+arc_length_lower <- aneurisk$abscissa[[lower_ind]]
+arc_length_upper <- aneurisk$abscissa[[upper_ind]]
+# Both datasets must be defined on the same grid
+all(arc_length_upper == arc_length_lower)
+arc_length <- arc_length_upper
+# Effective transformation to fd objects
+data_lower <- aneurisk$data[[lower_ind]]
+fd_lower <- fda::Data2fd(arc_length, t(data_lower))
+data_upper <- aneurisk$data[[upper_ind]]
+fd_upper <- fda::Data2fd(arc_length, t(data_upper))
+# Requirement: the differences between the mean assumed 
+# in the null hypothesis must be converted in fd format 
+# as well.
+fd_delta <- fda::Data2fd(arc_length, matrix(0, length(arc_length), dim(data_upper)[1]))
+```
+
+Now we can perform the test as follows:
+```{r fd_test}
+set.seed(1234)
+test_twosample(
+  x = fd_lower, 
+  y = fd_upper, 
+  mu = fd_delta,
+  step_size = 0.01, 
+  B = 100L
+)
+```

@@ -179,7 +179,7 @@ permutation_test <- function(x, y = NULL, mu = 0,
     boot_data <- perm_twosample(x, y, mu, paired, step_size, B, stat_fun, verbose)
 
   boot_data %>%
-    dplyr::mutate(test = map(stat_boot, `>=`, stat)) %>%
+    dplyr::mutate(test = purrr::map(stat_boot, `>=`, stat)) %>%
     `$`(test) %>%
     purrr::transpose() %>%
     purrr::simplify_all() %>%
